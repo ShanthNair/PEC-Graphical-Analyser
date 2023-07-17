@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+</head>
+<body>
+    <h1>File Upload</h1>
+    <p>Please upload the following CSV files:</p>
+    <ul>
+        <li><strong>dark_forward.csv:</strong> Dark Forward data</li>
+        <li><strong>light_forward.csv:</strong> Light Forward data</li>
+        <li><strong>light_no_bias.csv:</strong> Light No Bias data</li>
+        <li><strong>light_reverse.csv:</strong> Light Reverse data</li>
+        <li><strong>forward_sr.csv:</strong> Forward Series Resistance data</li>
+        <li><strong>reverse_sr.csv:</strong> Reverse Shunt Resistance data</li>
+    </ul>
+
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="dark_forward">Dark Forward:</label>
+        <input type="file" id="dark_forward" name="dark_forward" accept=".csv" required><br>
+
+        <label for="light_forward">Light Forward:</label>
+        <input type="file" id="light_forward" name="light_forward" accept=".csv" required><br>
+
+        <label for="light_no_bias">Light No Bias:</label>
+        <input type="file" id="light_no_bias" name="light_no_bias" accept=".csv" required><br>
+
+        <label for="light_reverse">Light Reverse:</label>
+        <input type="file" id="light_reverse" name="light_reverse" accept=".csv" required><br>
+
+        <label for="forward_sr">Forward Series Resistance:</label>
+        <input type="file" id="forward_sr" name="forward_sr" accept=".csv" required><br>
+
+        <label for="reverse_sr">Reverse Shunt Resistance:</label>
+        <input type="file" id="reverse_sr" name="reverse_sr" accept=".csv" required><br>
+
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
