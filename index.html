@@ -1,40 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>File Upload</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Cell Data Plot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #ff9800;
+        }
+
+        #upload-form {
+            margin: 30px auto;
+            max-width: 400px;
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #plot-image {
+            display: none;
+        }
+
+        .animation-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            background-color: #1c1c1c;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+    </style>
 </head>
 <body>
-    <h1>File Upload</h1>
-    <p>Please upload the following CSV files:</p>
-    <ul>
-        <li><strong>dark_forward.csv:</strong> Dark Forward data</li>
-        <li><strong>light_forward.csv:</strong> Light Forward data</li>
-        <li><strong>light_no_bias.csv:</strong> Light No Bias data</li>
-        <li><strong>light_reverse.csv:</strong> Light Reverse data</li>
-        <li><strong>forward_sr.csv:</strong> Forward Series Resistance data</li>
-        <li><strong>reverse_sr.csv:</strong> Reverse Shunt Resistance data</li>
-    </ul>
+    <div id="upload-form">
+        <h1>Solar Cell Data Plot</h1>
+        <h2>Instructions:</h2>
+        <p>Upload the CSV files in the following order:</p>
+        <ol>
+            <li>Light - Forward</li>
+            <li>Light - Reverse</li>
+            <li>Dark - Forward</li>
+            <li>Dark - Reverse</li>
+            <li>Light - No Bias</li>
+        </ol>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <label for="file1">File 1:</label>
+            <input type="file" name="file1" accept=".csv" required><br>
 
-    <form action="/" method="post" enctype="multipart/form-data">
-        <label for="dark_forward">Dark Forward:</label>
-        <input type="file" id="dark_forward" name="dark_forward" accept=".csv" required><br>
+            <label for="file2">File 2:</label>
+            <input type="file" name="file2" accept=".csv" required><br>
 
-        <label for="light_forward">Light Forward:</label>
-        <input type="file" id="light_forward" name="light_forward" accept=".csv" required><br>
+            <label for="file3">File 3:</label>
+            <input type="file" name="file3" accept=".csv" required><br>
 
-        <label for="light_no_bias">Light No Bias:</label>
-        <input type="file" id="light_no_bias" name="light_no_bias" accept=".csv" required><br>
+            <label for="file4">File 4:</label>
+            <input type="file" name="file4" accept=".csv" required><br>
 
-        <label for="light_reverse">Light Reverse:</label>
-        <input type="file" id="light_reverse" name="light_reverse" accept=".csv" required><br>
+            <label for="file5">File 5:</label>
+            <input type="file" name="file5" accept=".csv" required><br>
 
-        <label for="forward_sr">Forward Series Resistance:</label>
-        <input type="file" id="forward_sr" name="forward_sr" accept=".csv" required><br>
+            <label for="file6">File 6:</label>
+            <input type="file" name="file6" accept=".csv" required><br>
 
-        <label for="reverse_sr">Reverse Shunt Resistance:</label>
-        <input type="file" id="reverse_sr" name="reverse_sr" accept=".csv" required><br>
+            <input type="submit" value="Upload">
+        </form>
+        
+        <div id="plot-image" class="animation-container">
+            <h2>Plot:</h2>
+            <img src="" alt="Solar Cell Data Plot" id="plot-img">
+        </div>
+    </div>
 
-        <input type="submit" value="Upload">
-    </form>
+    <script>
+        const plotImg = document.getElementById('plot-img');
+        const plotImageContainer = document.getElementById('plot-image');
+
+        // Check if the plot image is available
+        plotImg.onload = () => {
+            plotImageContainer.style.display = 'block';
+        };
+
+        // Check if there was an error loading the plot image
+        plotImg.onerror = () => {
+            plotImageContainer.style.display = 'none';
+        };
+    </script>
 </body>
 </html>
